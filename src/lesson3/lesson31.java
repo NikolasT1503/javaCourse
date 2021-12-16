@@ -10,22 +10,63 @@ public class lesson31 {
         String s = sc.nextLine();
         String[] lexems = s.split(" ");
         String name = lexems[0];
-        String sumStr = lexems[1];
-        int sum = 0;
-        for (String sym : sumStr.split("")){
-            if (isNumber(sym)) {
-                sum += Integer.parseInt(sym);
-            }
-        }
-        System.out.println("Здравствуй " + name + "! Сумма чисел в числе = " + sum);
+        char[] charArray = lexems[1].toCharArray();
+
+        printSum(name, sum(charArray, charArray.length-1));
     }
 
-    private static boolean isNumber(String s) throws NumberFormatException {
-        try {
-            Integer.parseInt(s);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
+    private static int sum( char[] arr, int n ) {
+        if (n < 0) {
+            return 0;
+        } else{
+            int a;
+            try {
+                a = Character.getNumericValue(arr[n]);
+            } catch (NumberFormatException e) {
+                a = 0;
+                System.out.println("Ошибка преобразования в число");
+            }
+            return a + sum(arr, n-1);
+        }
+    }
+    private static void printSum (String name, int sum) {
+        switch (sum) {
+            case 0:
+                System.out.println("Здравствуй " + name + "! Сумма чисел в числе = Ноль");
+                break;
+            case 1:
+                System.out.println("Здравствуй " + name + "! Сумма чисел в числе = Один");
+                break;
+            case 2:
+                System.out.println("Здравствуй " + name + "! Сумма чисел в числе = Два");
+                break;
+            case 3:
+                System.out.println("Здравствуй " + name + "! Сумма чисел в числе = Три");
+                break;
+            case 4:
+                System.out.println("Здравствуй " + name + "! Сумма чисел в числе = Четыре");
+                break;
+            case 5:
+                System.out.println("Здравствуй " + name + "! Сумма чисел в числе = Пять");
+                break;
+            case 6:
+                System.out.println("Здравствуй " + name + "! Сумма чисел в числе = Шесть");
+                break;
+            case 7:
+                System.out.println("Здравствуй " + name + "! Сумма чисел в числе = Семь");
+                break;
+            case 8:
+                System.out.println("Здравствуй " + name + "! Сумма чисел в числе = Восемь");
+                break;
+            case 9:
+                System.out.println("Здравствуй " + name + "! Сумма чисел в числе = Девять");
+                break;
+            case 10:
+                System.out.println("Здравствуй " + name + "! Сумма чисел в числе = Десять");
+                break;
+            default:
+                System.out.println("Здравствуй " + name + "! Сумма чисел в числе = " + sum);
+                break;
         }
     }
 }
